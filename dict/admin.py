@@ -2,8 +2,8 @@ from django.contrib import admin
 from models import Cycle, Reading, GtrVoicing
 
 class CycleAdmin(admin.ModelAdmin):
-    fields = ('n1', 'n2', 'n3', 'n4', 'n5', 'n6', 'n7', 'n8', 'n9', 'n10', 'n11', 'n12')
-    list_display = ('n1', 'n2', 'n3', 'n4', 'n5', 'n6', 'n7', 'n8', 'n9', 'n10', 'n11', 'n12')
+    fields = ('n1','n2')
+    list_display = ('n1','n2')
 
 class GtrVoicingAdmin(admin.ModelAdmin):
     fields = ('cycle', 's1', 's2', 's3', 's4', 's5', 's6')

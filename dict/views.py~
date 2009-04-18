@@ -7,11 +7,11 @@ from django.shortcuts import render_to_response, get_object_or_404
 def reading(request, reading_id):
     #return HttpResponse("Bonjour tout le monde. Vous etes dans le detail du reading %s." % reading_id)
     reading_list = Reading.objects.all()
-    t = loader.get_template('cycle.svg')
+    t = loader.get_template('reading.svg')
     c = Context({
         'reading_list': reading_list,
     })
-    return HttpResponse(t.render(c))
+    return HttpResponse(t.render(c), mimetype="image/svg+xml")
 
 def cycle(request, reading_id):
     p = get_object_or_404(Cycle, pk=cycle_id)
