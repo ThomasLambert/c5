@@ -1,12 +1,9 @@
 from django.db import models
 
-# Create your models here.
-
 class Cycle(models.Model):
     def __unicode__(self):
-        return self.cycle
-    n1 = models.IntegerField()
-    n2 = models.IntegerField()
+        return self.cycle_id
+    cycle_id = models.TextField(primary_key=True)
 
 
 
