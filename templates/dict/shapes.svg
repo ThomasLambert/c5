@@ -1,0 +1,32 @@
+{% extends "dict/circle.svg" %}
+
+{% block shapes %}
+
+
+		
+	{% for shape in shape_list %}
+
+		
+<path style="fill:#{{fill}};fill-opacity:0.5;fill-rule:evenodd;stroke:#{{draw}};stroke-width:5px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+d="M {% for dot in shape %}{% if not forloop.first %} L {% endif %} {% ifequal dot 0 %} {{coord.0.0}},{{coord.0.1}}{% endifequal %} {% ifequal dot 1 %} {{coord.1.0}},{{coord.1.1}}{% endifequal %} {% ifequal dot 2 %} {{coord.2.0}},{{coord.2.1}}{% endifequal %} {% ifequal dot 3 %} {{coord.3.0}},{{coord.3.1}}{% endifequal %} {% ifequal dot 4 %} {{coord.4.0}},{{coord.4.1}}{% endifequal %} {% ifequal dot 5 %} {{coord.5.0}},{{coord.5.1}}{% endifequal %} {% ifequal dot 6 %} {{coord.6.0}},{{coord.6.1}}{% endifequal %} {% ifequal dot 7 %} {{coord.7.0}},{{coord.7.1}}{% endifequal %} {% ifequal dot 8 %} {{coord.8.0}},{{coord.8.1}}{% endifequal %} {% ifequal dot 9 %} {{coord.9.0}},{{coord.9.1}}{% endifequal %} {% ifequal dot 10 %} {{coord.10.0}},{{coord.10.1}}{% endifequal %} {% ifequal dot 11 %} {{coord.11.0}},{{coord.11.1}}{% endifequal %} {% endfor %} z" id="path2595" inkscape:connector-type="polyline" />
+
+{% comment %}
+
+
+		while( $note[$i + 1]['x'] != ''){ 
+			if( $i == '0' ) echo '"M '; else echo ' L ';
+			echo( $note[$i]['x'].','.$note[$i]['y'].' L '.$note[$i + 1]['x'].','.$note[$i + 1]['y']);
+			$i++;
+		}z"
+
+
+
+		 POur l'instant on ne gère pas la mise en exergue
+		  if fondamental
+		<circle cx="'.$fondamental['x'].'" cy="'.$fondamental['y'].'" r="20" 
+		style="fill:none;fill-opacity:1;stroke:#{{fill}};stroke-width:5;stroke-miterlimit:2;stroke-dasharray:none;stroke-opacity:1"/>
+
+		{% endcomment %}
+	{% endfor %}
+
+{% endblock %}

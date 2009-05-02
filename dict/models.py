@@ -1,33 +1,43 @@
+# -*- coding: utf-8 -*- 
 from django.db import models
+from c5.dict.base12 import *
+from pcsets import pcset
+import string
+
+#§%
 
 class Shape(models.Model):
-# Une shape est un dessin sur le cercle, soit groupe de notes
-    def __unicode__(self):
-        return self.shape_id
-    shape_id = models.TextField(primary_key=True)
-# shape_id représente les intervals : il sera en base-12, un chiffre par note.
-# Pour s'assurer qu'il n'y ai pas de doublons, on devra probablement toujours le transformer en sa "prime form"
+	rname = models.CharField(max_length=100)
 
+def c5_form(pcset):
+    """ Function that finds the prime c5 form of a shape
+    A prime c5 form is more compact way of expressing the chord in the circle : the interval of fifth is favored """
+    [doz(i) % 5 for i in list(pcset)]
 
 
 class Reading(models.Model):
-# Reading est une interprétation d'une shape. Ex : "Accord mineur"
+    """ Reading est une interpretation d'une shape. Ex : "Accord mineur" """
     def __unicode__(self):
         return self.rname
-    rname = models.CharField(max_length=100)
-    rtype = models.CharField(max_length=10)
-    fondamental = models.IntegerField()
-    shape = models.ForeignKey(Shape)
-    created = models.DateTimeField('Date de creation')
+#    rname = models.CharField(max_length=100)
+#    rtype = models.CharField(max_length=10)
+#    fondamental = models.IntegerField()
+    pcset = models.CharField(max_length=12)
+#    shape = models.ForeignKey(Shape)
+#    created = models.DateTimeField('Date de creation')
 
 
 class Voicing(models.Model):
-    shape = models.ForeignKey(Shape)
-# Il faudrait déclarer les fonctions relatives au voicings ici, de facon à se préparer à éventuellement avoir un autre instrument (ex : guitare accordé en open)
+    pcset = models.CharField(max_length=12)
+# Il faudrait declarer les fonctions relatives au voicings ici, de facon à se préparer a eventuellement avoir un autre instrument (ex : guitare accordée en open)
 
 
 class GtrVoicing(Voicing):
-# Je suis pas sur si on stock chaque corde séparément, ou plutot un champ "string"
+    def __unicode__(self):
+        return str(s1)+str(s2)+str(s3)+str(s4)+str(s5)+str(s6)
+    def instrument(self):
+	return "gtr"
+# Je suis pas sur si on stock chaque corde separement, ou plutot un champ "string"
     s1 = models.IntegerField()
     s2 = models.IntegerField()
     s3 = models.IntegerField()

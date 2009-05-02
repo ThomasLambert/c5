@@ -1,0 +1,14 @@
+{% extends "base.svg" %}
+
+
+{% block content %}
+<text x="100" y="100" font-family="Verdana" font-size="70" fill="#{{draw}}" >
+   Dictionnaire de voicings
+</text>
+{% include "dict/shapes.svg" %}
+{% endblock content %}
+
+
+
+
+

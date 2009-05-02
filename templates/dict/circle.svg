@@ -1,83 +1,4 @@
-<?xml version="1.0" encoding="iso-8859-1" ?>
-
-$cycle = $_GET['c'];
-$fill = $_GET['fill'];
-$bg = $_GET['bg'];
-$draw = $_GET['draw'];
-$f = $_GET['f'];
-if( $_GET['size'] != '') $size = $_GET['size']; else $size = 200;
-
-
-
-$px = 10;
-$py = 20;
-$coord[11]['x'] = $px + 221.917;
-$coord[11]['y'] = $py + 104.308;
-$coord[10]['x'] = $px + 113.940;
-$coord[10]['y'] = $py + 212.284;
-$coord[9]['x'] = $px + 74.418;
-$coord[9]['y'] = $py + 359.785;
-$coord[8]['x'] = $px + 113.940;
-$coord[8]['y'] = $py + 507.284;
-$coord[7]['x'] = $px + 221.918;
-$coord[7]['y'] = $py + 615.261;
-$coord[6]['x'] = $px + 369.418;
-$coord[6]['y'] = $py + 654.783;
-$coord[5]['x'] = $px + 516.916;
-$coord[5]['y'] = $py + 615.261;
-$coord[4]['x'] = $px + 624.894;
-$coord[4]['y'] = $py + 507.283;
-$coord[3]['x'] = $px + 664.416;
-$coord[3]['y'] = $py + 359.784;
-$coord[2]['x'] = $px + 624.893;
-$coord[2]['y'] = $py + 212.285;
-$coord[1]['x'] = $px + 516.916;
-$coord[1]['y'] = $py + 104.307;
-$coord[0]['x'] = $px + 369.417;
-$coord[0]['y'] = $py + 64.785;
-
-
-if( $f != "" and $f > -1 and $f < 12) {
-	$fondamental['x'] = $coord[$f]['x'];
-	$fondamental['y'] = $coord[$f]['y'];
-}
-
-$i = 0;
-$j = 0;
-while( substr($cycle , $i , 1) != "" ){
-	if ($origin == "") $origin = $j;
-
-	if( substr($cycle , $i , 1) == "1" ){
-
-		$note[$j]['x'] = $coord[$i]['x'];
-		$note[$j]['y'] = $coord[$i]['y'];
-		$j++;
-	}
-	$i++;
-}
-
-if( $draw == '')  $draw = '000000';
-
-?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
-<svg xmlns:dc="http://purl.org/dc/elements/1.1/"
-xmlns:cc="http://creativecommons.org/ns#"
-xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-xmlns:svg="http://www.w3.org/2000/svg"
-xmlns="http://www.w3.org/2000/svg"
-xmlns:xlink="http://www.w3.org/1999/xlink"
-xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-width="<?php echo $size ?>"
-height="<?php echo $size ?>"
-viewBox="0 0 750 750"
-id="svg2"
-sodipodi:version="0.32"
-inkscape:version="0.46"
-sodipodi:docname="C5test.svg"
-inkscape:output_extension="org.inkscape.output.svg.inkscape"
-version="1.0"
-style="background-color: #<?php if( $bg != '') echo $bg; else echo white ?>;">
+{% block circle %}
 <g
   inkscape:label="Calque 1"
   inkscape:groupmode="layer"
@@ -100,7 +21,7 @@ style="background-color: #<?php if( $bg != '') echo $bg; else echo white ?>;">
       sodipodi:cy="143.2249"
       sodipodi:cx="62.629459"
       id="path3572"
-      style="fill:#<?php echo $draw ?>;fill-opacity:1;stroke:#<?php echo $draw ?>;stroke-width:1;stroke-miterlimit:2;stroke-dasharray:none;stroke-opacity:1"
+      style="fill:#{{draw}};fill-opacity:1;stroke:#{{draw}};stroke-width:1;stroke-miterlimit:2;stroke-dasharray:none;stroke-opacity:1"
       sodipodi:type="arc" />
    <use
       id="use3598"
@@ -110,9 +31,7 @@ style="background-color: #<?php if( $bg != '') echo $bg; else echo white ?>;">
       id="use3600"
       transform="matrix(-0.8660254,-0.5,0.5,-0.8660254,536.76845,435.44922)"
       xlink:href="#path3572"
-      inkscape:tiled-clone-of="#path3572"
-      y="0"
-      x="0" />
+      inkscape:tiled-clone-of="#path3572"/>
    <use
       height="1052.3622"
       width="744.09448"
@@ -206,7 +125,7 @@ style="background-color: #<?php if( $bg != '') echo $bg; else echo white ?>;">
   </g>
   <path
     sodipodi:type="arc"
-    style="fill:none;fill-opacity:1;stroke:#<?php echo $draw ?>;stroke-width:5;stroke-miterlimit:2;stroke-dasharray:none;stroke-opacity:1"
+    style="fill:none;fill-opacity:1;stroke:#{{draw}};stroke-width:5;stroke-miterlimit:2;stroke-dasharray:none;stroke-opacity:1"
     id="path3637"
     sodipodi:cx="323.24881"
     sodipodi:cy="141.20459"
@@ -214,19 +133,10 @@ style="background-color: #<?php if( $bg != '') echo $bg; else echo white ?>;">
     sodipodi:ry="299.00516"
     d="M 622.25397,141.20459 A 299.00516,299.00516 0 1 1 24.243652,141.20459 A 299.00516,299.00516 0 1 1 622.25397,141.20459 z"
     transform="matrix(0.9867161,0,0,0.9867161,60.463657,240.88582)" /></g>
+{% block shapes %}{% endblock %}
+{% endblock circle %}
 
-  <path
-    style="fill:#<?php if( $fill != '') echo $fill; else echo '565656' ?>;fill-opacity:0.5;fill-rule:evenodd;stroke:#<?php echo $draw ?>;stroke-width:5px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-    d=<?php $i = 0; 
-while( $note[$i + 1]['x'] != ''){ 
-	if( $i == '0' ) echo '"M '; else echo ' L ';
-	echo( $note[$i]['x'].','.$note[$i]['y'].' L '.$note[$i + 1]['x'].','.$note[$i + 1]['y']);
-	$i++;
-}
-echo ' z"'
-?>
-    id="path2595"
-    inkscape:connector-type="polyline" />
-  <?php if( $fondamental != '' ) echo '<circle cx="'.$fondamental['x'].'" cy="'.$fondamental['y'].'" r="20" stroke="'.$draw.'" style="fill:none;fill-opacity:1;stroke:#'.$draw.';stroke-width:5;stroke-miterlimit:2;stroke-dasharray:none;stroke-opacity:1"/>' ?>
 
-</svg>
+
+
+
